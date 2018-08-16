@@ -45,15 +45,12 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(response.data);
 
     // Now, we grab every image within a post tag, and do the following:
-    $("post image").each(function(i, element) {
+    $(".image").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
       // Add the alt-text, text, and href of every link, and save them as properties of the result object
       result.title = $(this)
-        .children("a")
-        .text();
-      result.summary = $(this)
         .children("a")
         .text();
       result.link = $(this)
