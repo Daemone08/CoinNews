@@ -45,16 +45,19 @@ app.get("/scrape", function(req, res) {
     var $ = cheerio.load(response.data);
 
     // Now, we grab every image within a post tag, and do the following:
-    $(".image").each(function(i, element) {
+    $(".post .image a").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
       // Add the alt-text, text, and href of every link, and save them as properties of the result object
       result.title = $(this)
-        .children("a")
+        .children("img")
+        .attr("alt");
+      result.summary = $(this)
+        .children(".lead")
         .text();
       result.link = $(this)
-        .children("a")
+        // .children("a")
         .attr("href");
 
       // Create a new Article using the `result` object built from scraping
