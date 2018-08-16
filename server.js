@@ -48,6 +48,10 @@ app.get("/scrape", function (req, res) {
         $(".post .image a").each(function (i, element) {
             // Save an empty result object
             var result = {};
+            
+            // HERES WHERE THE LOGIC GOES TO AVOID DUPLICATES
+            // HERES WHERE THE LOGIC GOES TO AVOID DUPLICATES
+            // HERES WHERE THE LOGIC GOES TO AVOID DUPLICATES
 
             // Add the alt-text, text, and href of every link, and save them as properties of the result object
             result.title = $(this)
